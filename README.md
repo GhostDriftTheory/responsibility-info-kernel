@@ -1,5 +1,7 @@
 # Responsibility Information Kernel for Responsibility OS
 
+[![Lean](https://github.com/GhostDriftTheory/responsibility-info-kernel/actions/workflows/lean.yml/badge.svg)](https://github.com/GhostDriftTheory/responsibility-info-kernel/actions/workflows/lean.yml)
+
 This repository contains Lean developments supporting the Responsibility OS glossary and its mathematical claim about responsibility-relevant information.
 
 There are two Lean files:
