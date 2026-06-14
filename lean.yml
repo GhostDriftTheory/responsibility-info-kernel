@@ -1,0 +1,53 @@
+name: Lean
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check:
+    name: Check Lean files
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install elan
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Show Lean toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat lean-toolchain
+          lake --version
+
+      - name: Fetch Mathlib cache
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake exe cache get
+
+      - name: Build ResponsibilityOS dependency
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake build ResponsibilityOS
+
+      - name: Check ResponsibilityInfoKernel
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake env lean ResponsibilityInfoKernel.lean
+
+      - name: Check GenericNoncommutativity
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake env lean GenericNoncommutativity.lean
