@@ -228,3 +228,5 @@ These files are not intended to be checked with a bare Lean installation that ha
 ## Suggested One-Sentence Summary
 
 `ResponsibilityInfoKernel` formalizes why responsibility-relevant information must preserve histories and order-sensitive distinctions for retrospective inspectability; `GenericNoncommutativity` independently shows that, in finite-state transition dynamics, noncommutativity is generic rather than exceptional.
+
+Related repository: [responsibility-info-capacity](https://github.com/GhostDriftTheory/responsibility-info-capacity) formalizes the finite-capacity side of responsibility information, including PROV-style qualified fibers, ADIC certificate fibers, responsibility weight, and verification load.
